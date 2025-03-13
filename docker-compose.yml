@@ -30,7 +30,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.wger.entrypoints=https"
-      - "traefik.http.routers.wger.rule=Host(`qbittorrent.server.heatonshotdogs.com`)"
+      - "traefik.http.routers.wger.rule=Host(`wger.server.heatonshotdogs.com`)"
       - "traefik.http.routers.wger.tls=true"
       - "traefik.http.services.wger.loadbalancer.server.port=9080"
 

@@ -19,7 +19,7 @@ services:
       - static:/home/wger/static
       - media:/home/wger/media
     expose:
-      - 8000
+      - 9080
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost:8000
       interval: 10s

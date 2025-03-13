@@ -27,24 +27,30 @@ services:
       start_period: 300s
       retries: 5
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wger.entrypoints=https"
+      - "traefik.http.routers.wger.rule=Host(`qbittorrent.server.heatonshotdogs.com`)"
+      - "traefik.http.routers.wger.tls=true"
+      - "traefik.http.services.wger.loadbalancer.server.port=9080"
 
-  nginx:
-    image: nginx:stable
-    depends_on:
-      - web
-    volumes:
-      - ./config/:/etc/nginx/conf.d/
-      - static:/wger/static:ro
-      - media:/wger/media:ro
-    ports:
-      - "9080:80"
-    healthcheck:
-      test: service nginx status
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
-    restart: unless-stopped
+#  nginx:
+#    image: nginx:stable
+#    depends_on:
+#      - web
+#    volumes:
+#      - ./config/:/etc/nginx/conf.d/
+#      - static:/wger/static:ro
+#      - media:/wger/media:ro
+#    ports:
+#      - "9080:80"
+#    healthcheck:
+#      test: service nginx status
+#      interval: 10s
+#      timeout: 5s
+#      retries: 5
+#      start_period: 30s
+#    restart: unless-stopped
 
   db:
     image: postgres:15-alpine

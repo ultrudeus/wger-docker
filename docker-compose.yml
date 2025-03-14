@@ -27,9 +27,6 @@ services:
       start_period: 300s
       retries: 5
     restart: unless-stopped
-    networks:
-      - proxy
-      - default
 
   nginx:
     image: nginx:stable
@@ -57,6 +54,9 @@ services:
 #      - "traefik.http.middlewares.https-redirectscheme.redirectScheme.scheme=https"
 #      - "traefik.http.middlewares.https-redirectscheme.redirectScheme.permanent=true"
       - "traefik.http.routers.wger.middlewares=default-headers@file, https-redirectscheme"
+    networks:
+      - proxy
+      - default
 
   db:
     image: postgres:15-alpine

@@ -27,6 +27,8 @@ services:
       start_period: 300s
       retries: 5
     restart: unless-stopped
+    networks:
+      - proxy
 
   nginx:
     image: nginx:stable
@@ -134,3 +136,5 @@ volumes:
 networks:
   default:
     name: wger_network
+  proxy:
+    external: true

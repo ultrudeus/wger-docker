@@ -53,7 +53,7 @@ services:
       - "traefik.http.services.wger.loadbalancer.server.port=9080"
 #      - "traefik.http.middlewares.https-redirectscheme.redirectScheme.scheme=https"
 #      - "traefik.http.middlewares.https-redirectscheme.redirectScheme.permanent=true"
-      - "traefik.http.routers.wger.middlewares=default-headers@file, https-redirectscheme"
+#      - "traefik.http.routers.wger.middlewares=default-headers@file, https-redirectscheme"
     networks:
       - proxy
       - default

@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
     networks:
       - proxy
-      - wger_network
+      - default
 
   nginx:
     image: nginx:stable
